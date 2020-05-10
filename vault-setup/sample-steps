@@ -1,4 +1,5 @@
 install docker for desktop based on your OS
+make vault/data, vault\logs and vault/policies folder
 open 1st terminal and run docker-compose.yml
 open 2nd terminal and initialize vault
     docker ps -> to get vault's docker container's id
