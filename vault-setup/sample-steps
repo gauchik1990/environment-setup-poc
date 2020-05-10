@@ -1,0 +1,16 @@
+install docker for desktop based on your OS
+open 1st terminal and run docker-compose.yml
+open 2nd terminal and initialize vault
+    docker ps -> to get vault's docker container's id
+    docker exec -it <container_id> sh -> exec into vault container
+    vault operator init -> initialize vault, vault now should be in 'sealed' state, save the keys generated
+unseal vault before using
+    vault operator unsealed <unseal_key_1>
+    vault operator unsealed <unseal_key_2>
+    vault operator unsealed <unseal_key_3>
+    vault should be unsealed now
+login using root token
+vault login <root_token>
+or
+open vault UI: localhost:8200/ui and use <root_token> to login
+manage vault other via UI or API: https://www.vaultproject.io/api-docs
