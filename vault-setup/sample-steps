@@ -14,4 +14,19 @@ login using root token
 vault login <root_token>
 or
 open vault UI: localhost:8200/ui and use <root_token> to login
-manage vault other via UI or API: https://www.vaultproject.io/api-docs
+manage vault other via UI or API: https://www.vaultproject.io/api-docs and https://learn.hashicorp.com/vault/getting-started/policies
+
+Testing the policy:
+
+First, check to verify that KV v2 secrets engine has not been enabled at secret/.
+
+$ vault secrets list
+
+Path          Type         Accessor              Description
+----          ----         --------              -----------
+cubbyhole/    cubbyhole    cubbyhole_b81986c7    per-token private secret storage
+identity/     identity     identity_33dc5c7d     identity store
+sys/          system       system_ad432442       system endpoints used for control, policy and debugging
+If secret/ is not listed, enable it before proceeding.
+
+$ vault secrets enable -path=secret/ kv-v2
